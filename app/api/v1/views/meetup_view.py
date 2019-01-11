@@ -30,7 +30,7 @@ def create_meetup():
 
 @v1.route('/meetups/<int:meetup_id>', methods=['GET'])
 def fetch_meetup(meetup_id):
-    """ Function to fetch specific meetup """
+    """ Function to fetch specific meetup that exists """
     # Check if meetup exists 
     if not db.exists('id', meetup_id):
         return  jsonify({'status': 404, 'error': 'Meetup not found'}), 404
