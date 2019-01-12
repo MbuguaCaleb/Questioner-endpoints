@@ -25,8 +25,4 @@ def create_app(config_name):
    
     app.register_blueprint(meetups_blueprint_v1)
 
-    @app.route('/index', methods=['GET'])
-    def index():
-        return jsonify({'status': 200})
-
     return app
