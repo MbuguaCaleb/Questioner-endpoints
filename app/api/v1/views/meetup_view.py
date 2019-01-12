@@ -9,6 +9,7 @@ db = Meetup()
 
 @v1.route('/meetups', methods=['POST'])
 def create_meetup():
+    
     """ Function to create meetup """
     json_data = request.get_json()
 
@@ -25,7 +26,6 @@ def create_meetup():
     new_meetup = db.save(data)
     result = MeetupSchema().dump(new_meetup).data
     return jsonify({'status': 201, 'message': 'Meetup created successfully', 'data': [result]}), 201
-
 
 
 @v1.route('/meetups/<int:meetup_id>', methods=['GET'])
