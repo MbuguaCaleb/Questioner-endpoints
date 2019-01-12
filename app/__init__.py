@@ -8,7 +8,6 @@ from app.api.v1.views.meetup_view import v1 as meetups_blueprint_v1
 def create_app(config_name):
     """ Function to initialize Flask app """
 
-
     config_name = os.environ.get('FLASK_CONFIG', 'development')
 
     # Initialize app
@@ -30,3 +29,5 @@ def create_app(config_name):
         return jsonify({'status': 200})
 
     return app
+
+
