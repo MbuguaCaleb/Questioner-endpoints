@@ -17,16 +17,13 @@ def create_app(config_name):
 
     app.config.from_pyfile('config.py')
 
-    # Initialize JWT
-    jwt = JWTManager(app)
-
+ 
     # Register V1 Blueprints
    
     app.register_blueprint(meetups_blueprint_v1)
+    
+   
 
-    @app.route('/index', methods=['GET'])
-    def index():
-        return jsonify({'status': 200})
 
     return app
 

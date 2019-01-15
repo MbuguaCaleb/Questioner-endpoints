@@ -1,6 +1,6 @@
+
 from marshmallow import Schema, fields, post_dump
 from ..utils.validator import required
-
 
 class QuestionSchema(Schema):
     """ Class to validate schema for Question object """
@@ -14,7 +14,4 @@ class QuestionSchema(Schema):
     created_on = fields.DateTime(dump_only=True)
     modified_on = fields.DateTime(dump_only=True)
 
-
-
-
-
+    
