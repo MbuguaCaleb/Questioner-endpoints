@@ -1,4 +1,3 @@
-
 from marshmallow import Schema, fields, post_dump
 from ..utils.validator import required
 from ..models.user_model import User
