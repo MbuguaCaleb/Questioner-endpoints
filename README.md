@@ -63,21 +63,22 @@ Run the application
 When you run this application, you can test the following api endpoints using postman
 -----------------------------------------------
 
-
 | Endpoint | Functionality |
 ----------|---------------
-/api/v1/create_meetup | Create a meetup record
-/api/v1/meetups/meetup_id  | GET Fetch a specific meetup record
+/api/v1/meetups | POST Create a meetup record
+/api/v1/meetups/<meetup_id>  | GET Fetch a specific meetup record
 /api/v1/meetup/upcoming | GET	Fetch all upcoming meetup records
-/api/v1/add_question | 	Create a question for a specific meetup
-/api/v1/ questions/<question_id>/upvote/ | 	Up-vote a specific question
-/api/v1/ questions/<question_id>/downvote/ | 	Down-vote a specific question
-/api/v1/add_meetups/<meetup_id>/rsvps/ | 	POST	Create a question for a specific meetup
-	
+/api/v1/questions| POST	Create a question for a specific meetup
+/api/v1/ questions/<question_id>/upvote |PATCH 	Up-vote a specific question
+/api/v1/ questions/<question_id>/downvote |PATCH	Down-vote a specific question
 
+
+
+	
 Authors
 -----------------------------
 **MbuguaCaleb** - _Initial work_-[MbuguaCaleb](https://github.com/MbuguaCaleb)
+
 License
 ----
 
@@ -87,7 +88,7 @@ Acknowledgements
 --------------------------------
 1. Headfirst Labs
 2. Andela Workshops
-3. Group 11 team 
+3. Group 11 team and Penguin grouo members 
 
 
 
