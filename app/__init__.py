@@ -5,7 +5,7 @@ from flask_jwt_extended import (JWTManager)
 from app.api.v1.views.meetup_view import v1 as meetups_blueprint_v1
 from app.api.v1.views.questions_views import v1 as questions_blueprint_v1
 
-def create_app(config_name):
+def create_app(config_name="development"):
     """ Function to initialize Flask app """
 
     config_name = os.environ.get('FLASK_CONFIG', 'development')
