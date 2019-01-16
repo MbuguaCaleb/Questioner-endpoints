@@ -43,3 +43,5 @@ def fetch_upcoming_meetups():
     meetups = db.all()
     result = MeetupSchema(many=True).dump(meetups).data
     return jsonify({'status':200, 'data':result}), 200
+
+
