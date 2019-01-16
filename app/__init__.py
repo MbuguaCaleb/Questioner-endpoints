@@ -12,17 +12,17 @@ def create_app(config_name):
 
     # Initialize app
     app = Flask(__name__, instance_relative_config=True)
-
     app.config.from_object(app_config[config_name])
-
     app.config.from_pyfile('config.py')
 
  
     # Register V1 Blueprints
-   
     app.register_blueprint(meetups_blueprint_v1)
     app.register_blueprint(questions_blueprint_v1)
     
 
     return app
 
+
+
+    
