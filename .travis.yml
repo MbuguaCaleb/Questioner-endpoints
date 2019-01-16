@@ -14,7 +14,7 @@ env:
   - FLASK_VERSION=1.0.2
 
 script:
-  - nosetests --with-coverage --cover-package=app/api/v1 && coverage report
+  - nosetests 
   - coveralls
 
 after_success:
