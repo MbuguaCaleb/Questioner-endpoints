@@ -70,7 +70,7 @@ When you run this application, you can test the following api endpoints using po
 /api/v1/meetup/upcoming | GET	Fetch all upcoming meetup records
 /api/v1/questions| POST	Create a question for a specific meetup
 /api/v1/ questions/<question_id>/upvote |PATCH 	Up-vote a specific question
-/api/v1/ questions/<question_id>/downvote |PATCH	Down-vote a specific question
+/api/v1/ questions/<question_id>/downvote |PATCH	Down-votes a specific question
 
 
 
