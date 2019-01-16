@@ -6,17 +6,18 @@ python:
 install:
   - pip install -r requirements.txt
 
-  - pip install coveralls codecov
+  - pip install coveralls
 
   - pip install codeclimate-test-reporter
 
+env:
+  - FLASK_VERSION=1.0.2
 
 script:
-  - pytest 
-
+  - nosetests --with-coverage --cover-package=app/api/v1 && coverage report
+  - coveralls
 
 after_success:
   - coveralls
   - codeclimate-test-reporter
-  - codecov
-
+  
