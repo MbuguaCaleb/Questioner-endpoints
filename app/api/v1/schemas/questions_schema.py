@@ -13,3 +13,5 @@ class QuestionSchema(Schema):
     modified_on = fields.DateTime(dump_only=True)
     votes = fields.Int(dump_only=True)
 
+
+

@@ -62,6 +62,68 @@ class TestQuestions(unittest.TestCase):
         self.assertEqual(data['status'], 201)
         self.assertEqual(data['message'], 'Question posted successfully')
 
-      
-
     
+    def test_upvote_question_not_posted(self):
+        """ Test upvote for question that hasn't been posted """
+        res = self.client.patch('/api/v1/questions/3/upvote')
+        data = res.get_json()
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data['status'], 404)
+        self.assertEqual(data['message'], 'Question not found')
+
+
+    def test_upvote_question(self):
+        """ Test when question is  upvoted question successfully """
+
+        question = {
+            'title' : 'What is AI',
+            'body' : 'Is it relevant?',
+            'meetup' : 1,
+            
+        }
+
+        response_post = self.client.post('/api/v1/questions', json=question, headers={'Content-Type': 'application/json'})
+        question_id = response_post.get_json()['data']['id']
+
+        response = self.client.patch('/api/v1/questions/{}/upvote'.format(question_id))
+        data = response.get_json()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(data['status'], 200)
+        self.assertEqual(data['message'], 'Question has been upvoted successfully')
+        self.assertEqual(data['data']['votes'], 1)
+
+    def test_downvote_question_not_posted(self):
+
+        """ Test downvote for question that has not been posted """
+        response = self.client.patch('/api/v1/questions/5/downvote')
+        data = response.get_json()
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(data['status'], 404)
+        self.assertEqual(data['message'], 'Question missing')
+
+    def test_downvote_question(self):
+        """ Test downvote question successfully """
+
+        question = {
+            'title' : 'What is AI',
+            'body' : 'Is it relevant?',
+            'meetup' : 1,
+            
+        }
+       
+
+        response_post = self.client.post('/api/v1/questions', json=question, headers={'Content-Type': 'application/json'})
+        question_id = response_post.get_json()['data']['id']
+
+        response = self.client.patch('/api/v1/questions/{}/downvote'.format(question_id))
+        data = response.get_json()
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(data['status'], 200)
+        self.assertEqual(data['message'], 'Question has been downvoted successfully')
+        self.assertEqual(data['data']['votes'], -1)
+
+

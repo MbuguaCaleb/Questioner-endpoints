@@ -11,8 +11,8 @@ class Meetup(object):
     def save(self, data):
         """ Function to save new meetup """
         data['id'] = generate_id(meetups)
-        data['created_on'] = datetime.now().utf(8)
-        data['modified_on'] = datetime.now().utf(8)
+        data['created_on'] = datetime.now()
+        data['modified_on'] = datetime.now()
         meetups.append(data)
         return data
 
