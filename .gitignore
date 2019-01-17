@@ -57,7 +57,7 @@ local_settings.py
 db.sqlite3
 
 # Flask stuff:
-instance/
+
 .webassets-cache
 
 # Scrapy stuff:
@@ -97,8 +97,12 @@ venv.bak/
 # Rope project settings
 .ropeproject
 
+
 # mkdocs documentation
 /site
 
+
 # mypy
 .mypy_cache/
+
+.vscode/
