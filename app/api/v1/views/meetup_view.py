@@ -8,7 +8,7 @@ db = Meetup()
 
 @v1.route('/meetups', methods=['POST'])
 def create_meetup():
-    """ Function to create meetup """
+    """ Function to create a meetup """
     json_data = request.get_json()
 
     # No data has been provided
@@ -21,7 +21,7 @@ def create_meetup():
         return jsonify({'status': 400, 'error' : 'Invalid data. Please fill all required fields', 'errors': errors}), 400
 
     if db.exists('topic', data['topic']):
-        return jsonify({'status': 409, 'message' : 'Meetup already exists'}), 409
+        return jsonify({'status': 409, 'message' : 'Meetup already does exists'}), 409
 
   
     # Save new meetup and return response
