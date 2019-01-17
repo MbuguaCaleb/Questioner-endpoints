@@ -1,16 +1,6 @@
 import re
 from marshmallow import ValidationError
 
-def required(value):
-    """Validate that field under validation does not contain null value."""
-
-    if isinstance(value, str):
-        if not value.strip(' '):
-            raise ValidationError('This parameter cannot be null')
-        return value
-    elif value:
-        return value
-
 def email(value):
     """ Validate email format """
 
@@ -47,4 +37,14 @@ def password(password):
     
     if flag == -1:
         raise ValidationError('Weak password provided')
+
+def required(value):
+    """Validate that field under validation does not contain null value."""
+
+    if isinstance(value, str):
+        if not value.strip(' '):
+            raise ValidationError('This parameter cannot be null')
+        return value
+    elif value:
+        return value
         
