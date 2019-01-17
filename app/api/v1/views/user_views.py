@@ -44,3 +44,39 @@ def register():
         'data': result, 
        
         }), 201
+
+
+@v1.route('/login', methods=['POST'])
+def login():
+    json_data = request.get_json()
+
+    # Check if the request contains any data
+    if not json_data:
+        return jsonify({'status': 400, 'message': 'No data has provided! Please put your login credentials'}), 400
+
+    # Check if credentials have been passed
+    data, errors = UserSchema().load(json_data, partial=True)
+    if errors:
+        return jsonify({'status': 400, 'message': 'Invalid data. Please fill all required fields', 'errors': errors}), 400
+
+    try:
+        username = data['username']
+        password = data['password']
+    except:
+        return jsonify({'status': 400, 'message': 'Invalid credentials.Confirm!'}), 400
+
+    # Check if username exists
+    if not db.exists('username', username):
+        return jsonify({'status': 404, 'message' : 'User not found'}), 404
+
+    user = db.find_by_username(username)
+
+    # Checking if password match
+    db.checkpassword(user['password'], password)
+
+   
+    return jsonify({
+        'status': 200, 
+        'message': 'User logged in successfully',
+       
+        }), 200

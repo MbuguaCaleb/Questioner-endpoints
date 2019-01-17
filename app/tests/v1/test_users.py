@@ -115,3 +115,92 @@ class TestMeetups(unittest.TestCase):
         self.assertEqual(data['status'], 201)
         self.assertEqual(data['message'], 'User created successfully')
         self.assertEqual(data['data']['username'], user['username'])
+
+
+    def test_user_login_when_no_data_provided(self):
+
+        """ Test login with no data has been provided """
+
+        response= self.client.post('/api/v1/login')
+        data = response.get_json()
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(data['status'], 400)
+        self.assertEqual(data['message'], 'No data has provided! Please put your login credentials')
+
+   
+    def test_login_for_unregistered_user(self):
+        """ Test login with an un unregistered user credentials """
+        user = {
+            'username' : 'Gabriel',
+            'password' : '##@qssR7qq'
+        }
+
+        response = self.client.post('/api/v1/login', json=user, headers={'Content-Type': 'application/json'})
+        data = response.get_json()
+
+        self.assertEqual(response.status_code, 404)
+        self.assertEqual(data['status'], 404)
+        self.assertEqual(data['message'], 'User not found')
+
+    def test_login_success(self):
+        """ Test successfull login """
+        # Register user
+
+        
+        user = {
+            "firstname":"caleb",
+	        "lastname":"mbugua",
+	        "username":"MbuguaCaleb",
+	        "email":"mbuguacaleb30@gmail.com",
+	        "password":"Mbuguacaleb1#",
+	        "phone_number":"0704699193"
+	
+        }
+
+
+        res_1 = self.client.post('/api/v1/register', json=user, headers={'Content-Type': 'application/json'})
+        data_1 = res_1.get_json()
+
+        self.assertEqual(res_1.status_code, 201)
+        self.assertEqual(data_1['status'], 201)
+
+        # Login user
+        res_2 = self.client.post('/api/v1/login', json={'username': 'MbuguaCaleb', 'password': 'Mbuguacaleb1#'}, headers={'Content-Type': 'application/json'})
+        data_2 = res_2.get_json()
+
+        self.assertEqual(res_2.status_code, 200)
+        self.assertEqual(data_2['status'], 200)
+        self.assertEqual(data_2['message'], 'User logged in successfully')
+
+    def test_login_when_no_username_provided(self):
+        """ Test login with no username provided """
+        # Register user
+
+
+        
+        user = {
+            "firstname":"caleb",
+	        "lastname":"mbugua",
+	        "username":"MbuguaCaleb",
+	        "email":"mbuguacaleb30@gmail.com",
+	        "password":"Mbuguacaleb1#",
+	        "phone_number":"0704699193"
+	
+        }
+
+        res_1 = self.client.post('/api/v1/register', json=user, headers={'Content-Type': 'application/json'})
+        data_1 = res_1.get_json()
+
+        self.assertEqual(res_1.status_code, 201)
+        self.assertEqual(data_1['status'], 201)
+
+        # Login user
+        res_2 = self.client.post('/api/v1/login', json={'password': 'Mbuguacaleb1#'}, headers={'Content-Type': 'application/json'})
+        data_2 = res_2.get_json()
+
+        self.assertEqual(res_2.status_code, 400)
+        self.assertEqual(data_2['status'], 400)
+        self.assertEqual(data_2['message'], 'Invalid credentials.Confirm!')
+
+  
