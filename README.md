@@ -1,8 +1,7 @@
 # Questionner-api
 
 [![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
-
-[![Build Status](https://travis-ci.org/MbuguaCaleb/Questioner-endpoints.svg?branch=develop)](https://travis-ci.org/MbuguaCaleb/Questioner-endpoints)   [![Maintainability](https://api.codeclimate.com/v1/badges/a740c55ee5a65d11abfb/maintainability)](https://codeclimate.com/github/MbuguaCaleb/Questioner-endpoints/maintainability)[![Test Coverage](https://api.codeclimate.com/v1/badges/a740c55ee5a65d11abfb/test_coverage)](https://codeclimate.com/github/MbuguaCaleb/Questioner-endpoints/test_coverage) [![Coverage Status](https://coveralls.io/repos/github/MbuguaCaleb/Questioner-endpoints/badge.svg?branch=develop)](https://coveralls.io/github/MbuguaCaleb/Questioner-endpoints?branch=develop)
+[![Build Status](https://travis-ci.org/MbuguaCaleb/Questioner-endpoints.svg?branch=develop)](https://travis-ci.org/MbuguaCaleb/Questioner-endpoints)   [![Maintainability](https://api.codeclimate.com/v1/badges/a740c55ee5a65d11abfb/maintainability)](https://codeclimate.com/github/MbuguaCaleb/Questioner-endpoints/maintainability) [![Coverage Status](https://coveralls.io/repos/github/MbuguaCaleb/Questioner-endpoints/badge.svg?branch=develop)](https://coveralls.io/github/MbuguaCaleb/Questioner-endpoints?branch=develop)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)   [![PEP8](https://img.shields.io/badge/code%20style-pep8-green.svg)](https://www.python.org/dev/peps/pep-0008/)
 
 
@@ -70,8 +69,9 @@ When you run this application, you can test the following api endpoints using po
 /api/v1/meetup/upcoming | GET	Fetch all upcoming meetup records
 /api/v1/questions| POST	Create a question for a specific meetup
 /api/v1/ questions/<question_id>/upvote |PATCH 	Up-vote a specific question
-/api/v1/ questions/<question_id>/downvote |PATCH	Down-votes a specific question
-
+/api/v1/ questions/<question_id>/downvote |PATCH	Down-vote a specific question
+/api/v1/register| POST Create a meetup record
+/api/v1/login | POST Create a meetup record	
 
 
 	
