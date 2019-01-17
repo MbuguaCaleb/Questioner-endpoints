@@ -1,6 +1,3 @@
-
-
-
 language: python
 python:
     - 3.4
@@ -11,5 +8,7 @@ script:
     - pytest --cov=app --cov-report=term-missing
 after_success:
     - coveralls
+
+
 
     
