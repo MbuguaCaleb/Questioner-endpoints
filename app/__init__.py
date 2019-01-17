@@ -20,6 +20,40 @@ def create_app(config_name):
     app.register_blueprint(meetups_blueprint_v1)
     app.register_blueprint(questions_blueprint_v1)
     app.register_blueprint(users_blueprint_v1)
+
+    @app.errorhandler(404)
+    def page_not_found(error):
+        """ Handler for error 404 """
+
+        return jsonify({'status': 404, 'message': 'The requested page was not found!!!'}), 404
+
+    @app.errorhandler(405)
+    def method_not_allowed(error):
+        """ Handler for error 405 """
+
+        return jsonify({'status': 405, 'message': 'Method not allowed!!!!'}), 405
+
     
+    @app.errorhandler(400)
+    def method_not_allowed(error):
+        """ Handler for error 405 """
+
+        return jsonify({'status': 400, 'message': 'Method not allowed!!!!'}), 405
+    
+    
+    @app.errorhandler(401)
+    def method_not_allowed(error):
+        """ Handler for error 405 """
+
+        return jsonify({'status': 401, 'message': 'Unauthorised success!!!!!'}), 401
+    
+    
+    @app.errorhandler(403)
+    def method_not_allowed(error):
+        """ Handler for error 405 """
+
+        return jsonify({'status': 403, 'Forbidden': 'oops!Forbidden!!!'}), 403
+
+
     return app
 
