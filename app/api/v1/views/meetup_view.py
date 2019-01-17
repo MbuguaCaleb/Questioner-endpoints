@@ -20,6 +20,10 @@ def create_meetup():
     if errors:
         return jsonify({'status': 400, 'error' : 'Invalid data. Please fill all required fields', 'errors': errors}), 400
 
+    if db.exists('topic', data['topic']):
+        return jsonify({'status': 409, 'message' : 'Meetup already exists'}), 409
+
+  
     # Save new meetup and return response
     new_meetup = db.save(data)
     result = MeetupSchema().dump(new_meetup).data
