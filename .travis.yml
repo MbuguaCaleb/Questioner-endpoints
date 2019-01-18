@@ -8,8 +8,8 @@ install:
   - pip install coveralls
 
 script:
-  - pytest  --with-coverage --cover-package=app/api/v1 && coverage report
-  - coveralls
+  - pytest --cov=app/tests
+  - pytest --cov=app
 
 after_success:
   - coveralls
