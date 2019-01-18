@@ -5,9 +5,11 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install coveralls
 
 script:
-  - pytest  --cov=app
+  - pytest  --with-coverage --cover-package=app/api/v1 && coverage report
+  - coveralls
 
 after_success:
   - coveralls
